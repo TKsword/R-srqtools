@@ -8,4 +8,8 @@ Description: For the uncommon statistical methods introduced in the paper, the c
 License: GPL
 Encoding: UTF-8
 LazyData: true
+Imports:
+    WGCNA,
+    openxlsx,
+    stringr
 RoxygenNote: 7.1.1
