@@ -11,5 +11,6 @@ LazyData: true
 Imports:
     WGCNA,
     openxlsx,
-    stringr
+    stringr,
+    doParallel
 RoxygenNote: 7.1.1

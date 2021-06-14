@@ -3,5 +3,6 @@
 export(ProsigA)
 export(SimpleWGCNA)
 import(WGCNA)
+import(doParallel)
 import(openxlsx)
 import(stringr)

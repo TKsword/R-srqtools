@@ -15,6 +15,7 @@
 #' @import WGCNA
 #' @import stringr
 #' @import openxlsx
+#' @import doParallel
 #'
 #'
 #' @examples
