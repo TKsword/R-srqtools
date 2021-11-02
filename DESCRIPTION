@@ -12,5 +12,8 @@ Imports:
     WGCNA,
     openxlsx,
     stringr,
-    doParallel
+    doParallel,
+    MatrixCorrelation,
+    stats,
+    dplyr
 RoxygenNote: 7.1.1
