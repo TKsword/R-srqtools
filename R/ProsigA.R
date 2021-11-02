@@ -1,4 +1,4 @@
-#' Proteome Significance A
+#' @title Proteome Significance A
 #'
 #' When there is no biological duplication (or only 2 biological duplications), calculate the p-value of the proteomic data.
 #'

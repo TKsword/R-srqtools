@@ -1,4 +1,4 @@
-#' @description Calculate the correlation coefficient between two Matrices
+#' @title Calculate the correlation coefficient between two Matrices
 #'
 #' @description To calculate the correlation coefficient between two equivalent matrices or non-equivalent matrices, refer to the specific method:
 #' @description Indahl, U.G.; Næs, T.; Liland, K.H.; 2018. A similarity index for comparing coupled matrices. Journal of Chemometrics; e3049.

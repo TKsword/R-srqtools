@@ -2,7 +2,11 @@
 
 export(ProsigA)
 export(SimpleWGCNA)
+export(testexport)
+import(MatrixCorrelation)
 import(WGCNA)
 import(doParallel)
+import(dplyr)
 import(openxlsx)
+import(stats)
 import(stringr)
