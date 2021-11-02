@@ -9,7 +9,7 @@
 #' @param method method of calculating correlation coefficient: "SMI", "RV", "RV2", "RVadj", "PSI", "pearson", "r1", "r2", "r3", "r4", "spearman", "GCD" or "kendall"
 #'
 #' @param ncomp1 maximum number of subspace components from the first matrix.
-#' @param ncomp1 maximum number of subspace components from the second matrix.
+#' @param ncomp2 maximum number of subspace components from the second matrix.
 #'
 #'
 #'
@@ -22,7 +22,8 @@
 #'
 #' @examples
 
-corMatrix <- function(X1, X2, equal = TRUE, method = "pearson",
+corMatrix <- function(X1, X2, equal = TRUE,
+                      method = c("SMI", "RV", "RV2", "RVadj", "PSI", "r1", "r2", "r3", "r4", "GCD"),
                       ncomp1, ncomp2, ...){
   if (equal == FALSE){
     if (missing(ncomp1) && ("SMI" %in% methods || "GCD" %in% methods)) {
@@ -56,6 +57,9 @@ corMatrix <- function(X1, X2, equal = TRUE, method = "pearson",
     X2 <- as.matrix(X2) %>% as.vector(.)
     if (length(X1) != length(X2)){
       return(errorCondition("Please check if the two matrices are equivalent"))
+    }
+    if(length(method) > 1){
+      method <- "pearson"
     }
     result <- cor(X1, X2, method = method)
   }

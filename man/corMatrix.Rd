@@ -4,7 +4,15 @@
 \alias{corMatrix}
 \title{Calculate the correlation coefficient between two Matrices}
 \usage{
-corMatrix(X1, X2, equal = TRUE, method = "pearson", ncomp1, ncomp2, ...)
+corMatrix(
+  X1,
+  X2,
+  equal = TRUE,
+  method = c("SMI", "RV", "RV2", "RVadj", "PSI", "r1", "r2", "r3", "r4", "GCD"),
+  ncomp1,
+  ncomp2,
+  ...
+)
 }
 \arguments{
 \item{X1}{matrix 1 (data.frame format is also accepted)}
@@ -15,7 +23,9 @@ corMatrix(X1, X2, equal = TRUE, method = "pearson", ncomp1, ncomp2, ...)
 
 \item{method}{method of calculating correlation coefficient: "SMI", "RV", "RV2", "RVadj", "PSI", "pearson", "r1", "r2", "r3", "r4", "spearman", "GCD" or "kendall"}
 
-\item{ncomp1}{maximum number of subspace components from the second matrix.}
+\item{ncomp1}{maximum number of subspace components from the first matrix.}
+
+\item{ncomp2}{maximum number of subspace components from the second matrix.}
 }
 \description{
 To calculate the correlation coefficient between two equivalent matrices or non-equivalent matrices, refer to the specific method:
