@@ -2,7 +2,11 @@
 % Please edit documentation in R/ProsigA.R
 \name{ProsigA}
 \alias{ProsigA}
-\title{Proteome Significance A}
+\title{Proteome Significance A
+
+When there is no biological duplication (or only 2 biological duplications), calculate the p-value of the proteomic data.
+
+Note: use empirical distribution.}
 \usage{
 ProsigA(x, n)
 }
@@ -15,8 +19,9 @@ ProsigA(x, n)
 P-value between each protein.
 }
 \description{
+Proteome Significance A
+
 When there is no biological duplication (or only 2 biological duplications), calculate the p-value of the proteomic data.
-}
-\details{
+
 Note: use empirical distribution.
 }

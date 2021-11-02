@@ -13,8 +13,7 @@
 #'
 #'
 #'
-#' @return testreturn
-#' @export testexport
+#' @export corMatrix
 #'
 #' @import dplyr
 #' @import stats

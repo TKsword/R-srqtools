@@ -2,7 +2,7 @@
 
 export(ProsigA)
 export(SimpleWGCNA)
-export(testexport)
+export(corMatrix)
 import(MatrixCorrelation)
 import(WGCNA)
 import(doParallel)
