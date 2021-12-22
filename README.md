@@ -11,3 +11,5 @@ The purpose is to complete calculations quickly and simply.
 * **SimpleWGCNA**: Use the established parameters, simplify the WGCNA code, and facilitate repeated calculations.
 
 * **corMatrix**: Calculate the correlation coefficient between two Matrices (different from the correlation coefficient matrix).
+
+* **corMatrixTest**: Hypothesis test on the correlation number between two matrices.
