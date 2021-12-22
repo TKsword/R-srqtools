@@ -18,6 +18,7 @@
 #' @import dplyr
 #' @import stats
 #' @import MatrixCorrelation
+#' @import pracma
 #'
 #'
 #' @examples
@@ -26,18 +27,18 @@ corMatrix <- function(X1, X2, equal = TRUE,
                       method = c("SMI", "RV", "RV2", "RVadj", "PSI", "r1", "r2", "r3", "r4", "GCD"),
                       ncomp1, ncomp2, ...){
   if (equal == FALSE){
-    if (missing(ncomp1) && ("SMI" %in% methods || "GCD" %in% methods)) {
+    if (missing(ncomp1) && ("SMI" %in% method || "GCD" %in% method)) {
       ncomp1 <- min(5, Rank(X1) - 1)
       warning(paste("ncomp1 not specified, defaulting to ", ncomp1, sep = ""))
     }
-    if (missing(ncomp2) && ("SMI" %in% methods || "GCD" %in% methods)) {
+    if (missing(ncomp2) && ("SMI" %in% method || "GCD" %in% method)) {
       ncomp2 <- min(5, Rank(X2) - 1)
       warning(paste("ncomp2 not specified, defaulting to ", ncomp2, sep = ""))
     }
-    n.met <- length(methods)
+    n.met <- length(method)
     results <- numeric(n.met)
     for (i in 1:n.met) {
-      results[i] <- switch(methods[i], SMI = SMI(X1, X2, ncomp1, ncomp2, ...)[ncomp1, ncomp2],
+      results[i] <- switch(method[i], SMI = SMI(X1, X2, ncomp1, ncomp2, ...)[ncomp1, ncomp2],
                            RV = RV(X1, X2),
                            RV2 = RV2(X1, X2),
                            RVadj = RVadj(X1, X2),
@@ -48,7 +49,7 @@ corMatrix <- function(X1, X2, equal = TRUE,
                            r4 = r4(X1, X2),
                            GCD = GCD(X1, X2, ncomp1, ncomp2))
     }
-    names(results) <- methods
+    names(results) <- method
     if (!is.null(digits) && !is.na(digits)) {
       results <- round(results, digits)
     }
