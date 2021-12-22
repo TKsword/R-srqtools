@@ -7,8 +7,6 @@
 #' @param alternative indicates the alternative hypothesis and must be one of "two.sided", "greater" or "less". You can specify just the initial letter. "greater" corresponds to positive association, "less" to negative association.
 #' @param conf.level confidence level for the returned confidence interval. Currently only used for the Pearson product moment correlation coefficient if there are at least 4 complete pairs of observations.
 #'
-#' @param ncomp1 maximum number of subspace components from the first matrix.
-#' @param ncomp2 maximum number of subspace components from the second matrix.
 #'
 #'
 #' @export corMatrixTest
