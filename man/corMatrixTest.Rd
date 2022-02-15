@@ -24,10 +24,6 @@ corMatrixTest(
 \item{method}{a character string indicating which correlation coefficient is to be used for the test. One of "pearson", "kendall", or "spearman", can be abbreviated.}
 
 \item{conf.level}{confidence level for the returned confidence interval. Currently only used for the Pearson product moment correlation coefficient if there are at least 4 complete pairs of observations.}
-
-\item{ncomp1}{maximum number of subspace components from the first matrix.}
-
-\item{ncomp2}{maximum number of subspace components from the second matrix.}
 }
 \description{
 Hypothesis test on the correlation number between two matrices
