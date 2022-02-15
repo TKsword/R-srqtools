@@ -16,8 +16,40 @@
 #'
 #' @examples
 
-# 计算单个比例差的置信区间
+# 计算多重置信区间
 
+studentRangeDiffCI <- function(name, success, size, level = 0.95){
+
+  no.groups<-length(size)
+  no.comp<-choose(no.groups,2)
+  Diff.Score.CI.Set<-index<-matrix(c(rep(0,no.comp*3)), ncol=3)
+  i<-0
+  j<-0
+  r<-0
+  namelist<-c()
+  for(i in 1:(no.groups-1)){
+    for(j in (i+1):no.groups){
+      r<-r+1
+      y1<-success[i]
+      y2<-success[j]
+      N1<-size[i]
+      N2<-size[j]
+      conflev<-level
+      alpha<-1-level
+      diff.int<-diff.student.CI(y1, N1, y2, N2, alpha,no.groups)
+      Diff.Score.CI.Set[r,1]<-(y1/N1 - y2/N2)
+      Diff.Score.CI.Set[r,2]<-diff.int[1]
+      Diff.Score.CI.Set[r,3]<-diff.int[2]
+      namelist[r]<-paste0(name[i],"vs",name[j])
+    }
+  }
+
+  dimnames(Diff.Score.CI.Set)<-list(namelist, c("Estimate", "Lower bound", "Upper bound"))
+
+  return(Diff.Score.CI.Set)
+}
+
+#' @noRd
 Score.diff<- function (y1,N1,y2,N2,dif){
   p1x<-y1/N1
   p1y<-y2/N2
@@ -54,6 +86,7 @@ Score.diff<- function (y1,N1,y2,N2,dif){
   return(fmdiff)
 }
 
+#' @noRd
 diff.student.CI <- function(y1, N1, y2, N2, alpha, t){
   Q.T.alpha<-qtukey(p=alpha, nmeans=t, lower.tail=FALSE, log.p=FALSE, df=Inf)
   card<-2000
@@ -69,37 +102,4 @@ diff.student.CI <- function(y1, N1, y2, N2, alpha, t){
   right.Score<-max(store.Score.Diff[abs(store.Score.Diff)<2])
   Score.CI<-c(1,1)*c(left.Score, right.Score)
   return(Score.CI)
-}
-
-# 计算多重置信区间
-
-studentRangeDiffCI <- function(name, success, size, level = 0.95){
-
-  no.groups<-length(size)
-  no.comp<-choose(no.groups,2)
-  Diff.Score.CI.Set<-index<-matrix(c(rep(0,no.comp*3)), ncol=3)
-  i<-0
-  j<-0
-  r<-0
-  namelist<-c()
-  for(i in 1:(no.groups-1)){
-    for(j in (i+1):no.groups){
-      r<-r+1
-      y1<-success[i]
-      y2<-success[j]
-      N1<-size[i]
-      N2<-size[j]
-      conflev<-level
-      alpha<-1-level
-      diff.int<-diff.student.CI(y1, N1, y2, N2, alpha,no.groups)
-      Diff.Score.CI.Set[r,1]<-(y1/N1 - y2/N2)
-      Diff.Score.CI.Set[r,2]<-diff.int[1]
-      Diff.Score.CI.Set[r,3]<-diff.int[2]
-      namelist[r]<-paste0(name[i],"vs",name[j])
-    }
-  }
-
-  dimnames(Diff.Score.CI.Set)<-list(namelist, c("Estimate", "Lower bound", "Upper bound"))
-
-  return(Diff.Score.CI.Set)
 }
